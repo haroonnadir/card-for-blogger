@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <style>
+     
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: "Open Sans";
+        }
+        
+        .content-wrapper {
+          margin: 0 auto;
+          max-width: 1200px;
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: center;
+          padding: 0.5rem;
+        }
+        
+        .news-card {
+          border: 0px solid aqua;
+          margin: 0.5rem;
+          position: relative;
+          height: 12rem;
+        }
+        @media screen and (min-width: 900px){
+        .news-card{
+            height: 20rem;
+           overflow: hidden;
+          border-radius: 0.5rem;
+          flex: 1;
+          min-width: 290px;
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        }
+        }
+        @media screen and (min-width: 600px){
+        .news-card{
+            height: 20rem;
+           overflow: hidden;
+          border-radius: 0.5rem;
+          flex: 1;
+          min-width: 290px;
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        }
+        }
+   @media screen and (min-width: 300px){
+        .news-card{
+            height: 20rem;
+           overflow: hidden;
+          border-radius: 0.5rem;
+          flex: 1;
+          min-width: 290px;
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        }
+        }
+          .news-card::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 80%);
+              z-index: 0;
+            }
+          
+          .news-card__card-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        /*     background: rgba(255,0,0,.5); */
+          }
+        
+          .news-card__image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition:  3s ease;
+        
+            position: relative;
+            z-index: -1;
+          }
+          .news-card__text-wrapper {
+            position: absolute;
+            bottom: 0rem;
+            padding: 1rem;
+            color: white;
+        /*     background-color: rgba(0, 0, 0, 0.4); */
+            transition:  1.5s ease;
+          }
+          .news-card__title {
+            transition: color 1s ease;
+            margin-bottom: .5rem;
+          }
+          .news-card__post-date {
+            font-size: .7rem;
+            margin-bottom: .5rem;
+            color: #CCC;
+          }
+          .news-card__details-wrapper {
+            max-height: 0;
+            opacity: 0;
+            transition: 1.5s ease,  1s ease;
+          }
+          @media (min-width: 900px){
+            .news-card:hover .news-card__details-wrapper {
+              max-height: 20rem;
+              opacity: 1;
+            }
+            .news-card:hover .news-card__text-wrapper {
+              background-color: rgba(0, 0, 0, 0.6);
+            }
+            .news-card:hover .news-card__title {
+              color: yellow;
+            }
+            .news-card__image:hover  {
+              transform: scale(1.2);
+              z-index: -1;
+              object-fit: contain;
+            transition:  4s ease;
+            
+            }
+          }
+           @media (min-width: 600px){
+            .news-card:hover .news-card__details-wrapper {
+              max-height: 20rem;
+              opacity: 1;
+            }
+            .news-card:hover .news-card__text-wrapper {
+              background-color: rgba(0, 0, 0, 0.6);
+            }
+            .news-card:hover .news-card__title {
+              color: yellow;
+            }
+            .news-card__image:hover  {
+              transform: scale(1.2);
+              z-index: -1;
+              object-fit: contain;
+            transition:  4s ease;
+            
+            }
+          }
+          @media (min-width: 300px){
+            .news-card:hover .news-card__details-wrapper {
+              max-height: 20rem;
+              opacity: 1;
+            }
+            .news-card:hover .news-card__text-wrapper {
+              background-color: rgba(0, 0, 0, 0.6);
+            }
+            .news-card:hover .news-card__title {
+              color: yellow;
+            }
+            .news-card__image:hover  {
+              transform: scale(1.2);
+              z-index: -1;
+              object-fit: contain;
+            transition:  4s ease;
+            
+            }
+          }
+          .new-card__excerpt {
+            font-weight: 300;
+          }
+          .news-card__read-more {
+            background: black;
+            color: #bbb;
+            display: block;
+            padding: 0.4rem 0.6rem;
+            border-radius: 0.3rem;
+            margin-top: 1rem;
+            border: 1px solid #444;
+            font-size: 0.8rem;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            text-decoration: none;
+            width: 7rem;
+            margin-left: auto;
+            position: relative;
+            z-index: 5;
+        }
+        .news-card__read-more:hover{
+            font-size: 0.8rem ;
+            font-weight: bold;
+            color: white;
+        }
+        .i {
+              position: relative;
+              left: 0.2rem;
+              color: #f5f0f0;
+              transition: left 0.5s ease, color 0.6s ease;
+              
+              
+            }
+            i:hover {
+              left: 0.5rem;
+              color: rgb(233, 233, 17);
+            }
+        
+        
+        
+            </style>
+    <div class="content-wrapper">
+  
+        <div class="news-card">
+          
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUVPiXzLl7SllmRVyfRWVOqxMbU-xDbMBtF-RFaUHQyjt40tfidHixlFENylbX8TcaHYPTxoPTa3ixiNnmMXHsvtbrR0M-42W4yUZvkmjeXDDogmMfnEyTfm4ZZTFdxXbDQy2BQXpyYU2k281nZtYK-18-sAwzANjzQzWw1pyAyiMvpf62O-1xOcOEpBY/s320/71SVXU-2xDS._AC_SX569_.jpg" alt="" class="news-card__image">
+          <div class="news-card__text-wrapper">
+            <h2 class="news-card__title">Plastic Plants Nursery Pot</h2>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Pot is a versatile solution for succulent enthusiasts, offering an ample quantity of pots for seed starting, seedlings, cuttings, and transplanting</p>
+              <a href="https://amzn.to/3Iq1VcH" class="news-card__read-more">🛒BuyNow <i class="fa fa-long-arrow-right" >⇨</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="news-card">
+          
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFbyWhPjQTkfF_uaA8qOzlvi3_35pA0rzdM2he4df5PDLzLX-qzSrWUCUN6nMsVLaQp4v0Y4TRwiCn-DanyWlNoUOXk-KjAWwCROUA0qF0a4xO2mOcwrkZI8OilBeOthFQ8oWpp9A_oy2sD5aMST1vvhzduAMFSG3y8zBh5PLJVQ9KwMZbs3KT1MYT3HI/w285-h270/71GrAWYYDyL._AC_SX522_.jpg" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title">FLOWER Plant Terrarium with Wooden Stand</h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt">Whether you're into hydroponics, home gardening, or simply enhancing your office décor</p>
+                <a href="https://amzn.to/3P4y3Xm" class="news-card__read-more">🛒BuyNow <i class="fa fa-long-arrow-right" >⇨</i></a>
+              </div>
+            </div>
+          </div>
+        
+        <div class="news-card">
+          
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiE3InwRuBXHGwqLh6Mf7Ljmzd49-d1nchcFt8mtC-grqavV0rxUBqjAQM-LYPglxytCaBukt6jlPIvpEDJS1QT0-HCEnGclYjNWfnmghzNG27xHV98l71o51W1KY1ywUt4FkZRfPy3SDxHcRYGdRnBCUTjFKuK_q7-QrWP4vMh7RGkoDU0EUxppRGYlxQ/s320/71Efq08A8wL._AC_SX569_.jpg" alt="" class="news-card__image">
+          <div class="news-card__text-wrapper">
+            <h2 class="news-card__title">Amazing Second Title that is Quite Long</h2>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Desktop Glass Planter Hydroponics Vase is a fusion of modern creativity and botanical elegance</p>
+              <a href="https://amzn.to/4a19YIG" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="news-card">
+          
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7eHRB-ysRcz5ZVdFf84oYKAdpLVs3__tQPUhPI_oaBuHBL95KsVNF4L7iC9D4zUmkXDlnW0MTZ4oc9tvBx7tfBNCtRy3qUM7FIIsFRuu36pCMyzEH87lAotlh8gk7qjQasfEswpTDN2AJzgq_RivrzwCsjmH_s2gtyD6SK2t3wtk_qZK6hyphenhyphen_0gUdu5kk/w282-h289/91w3VRo2Q8L._AC_SX569_.jpg" alt="" class="news-card__image">
+          <div class="news-card__text-wrapper">
+            <h2 class="news-card__title">NCYP Gold Glass Terrarium</h2>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt"> This pentagon geometric planter provides a stylish haven for succulents and air plants, transforming your tabletop into a miniature garden.</p>
+              <a href="#" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="news-card">
+          
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgj06qikjFLXdgb6dgyPaMaW7KMqxpoi-wJeDR0SdiQqAHmruCtSP7o8sAiOf_EVCNPE8zuVXPmcP0RKXmMucM-ahuKzoI4XOtuxz-z6Hb4tGddwDU9xfsjIikE7SuvMoCI7GPd9ZTUqX78xHC7vNgpdBXL65xB84hRyMv29kmgiH2bsc1Mk7cnWgaTQnE/s300/91R59iSX80L.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="" class="news-card__image">
+          <div class="news-card__text-wrapper">
+            <h2 class="news-card__title">Classic  Whiskey Barrel Planter</h2>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt"> Crafted from durable plastic resin, this 15-inch flower pot adds a touch of timeless elegance to your outdoor space.</p>
+              <a href="https://amzn.to/48MbMo5" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+            </div>
+          </div>
+        </div>
+          <div class="news-card">
+          
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi81FkLK7pKVC_OGuckUeqGxHoZ7BRW-mJA9zkO1tLJ5MaReb-OjNrV2hWUxryUObOm_qZFXCd1FzekF3Nfr2ynpjDWArtbGNPNc5aXeXOxG-miH-pbFY1gWoHcvksYEvRMhBV7bbLtl_cOFHfbxPDACT7wud8_I4j-ND0y8NK_O8k_YaveSXwtDPFdYT0/w278-h252/710pa2FUIlL._AC_SX569_.jpg" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title">Valley Traders Wood-Look Barrel</h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt">Crafted from lightweight and durable plastic, this set of 4 planters offers the charm of wood barrels without the weight and maintenance</p>
+                <a href="https://amzn.to/3TAk6mJ" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4gzl-J-AapTYYJ7jUCsrvpRVARQtI-9KMccvDCpbD56IHj_FMxHuONKLEJpNZuuJua_cdl47n6qEbqJbnxOKyH-hDoYpZkm4X8z3o0mS92sG1Hhuds_Lyg9LxYMrLSIDisUUFITFo_jMP4vhcguk0Mou3iC6Ldl5XpDVF61Qr_L45Mo5kzO134sP6KcA/w264-h298/71iOGWkKwvL._AC_SX569_.jpg" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title">Classic Venetian Deep Bowl Planter</h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt">With its deep bowl design and elegant gray granite finish, this 12.5-inch planter is a statement piece for your garden. </p>
+                <a href="https://amzn.to/4a4qjN7" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOd0LdKCnsFc51rTamluPi40aGh7Mse_4V4Rmr-Mn2rOOuOPdte2W42c07Zzp01W_15QB9CnnMB36zm3FEjIQXpM7mw_Dti_lfRuniouJ0Ugj5ArSakwX8h7iFUH6R9x7n29hGXXvAX0aXndRIBPZ-RRDXvcTht627RL1I-JOV_E-BUnQV1EZaZXRM-Bw/s320/91k6FwB6TEL._AC_SX569_.jpg" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title">Classic Premiere Collection Planter</h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt">Adorned with the captivating Northern Lights finish, introduces an air of sophistication to your garden. </p>
+                <a href="https://amzn.to/3Tnt1Ye" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgXFn8UiOmCFkb3dykxJexa5NTg7GnF6DA_HKzMdmCqC_26AxsRCJ26qjQFwuNnAzK2wX2bNHqzMzEP1rIsqqAse2RXvKsDLoMqO1mao7mVaQL54nRwqMNqbqAkYMokhlvG8bIHpviOJLM8J_0q64jlZVpxpZyEwMKLqZT9r5tYv_4Wwztz8x-ZuTzsb0w/w294-h314/91syuL3361L._AC_SX569_.jpg" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title">Foreside Black Terracotta and Woven Rattan Planter</h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt">With a blend of black terracotta and woven rattan, this planter brings a harmonious combination of materials to your home decor.</p>
+                <a href="https://amzn.to/3IrOYPC" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMRWZSKq_ARP4IEqe5XoDELgxORTjOLuDnaJRBW76H3F8OPiIXosHi6cf6MdgwcTyHHx4nigqrsT0Ba-3b00kYpEcJe6UEaQ0mNooR_PzJ8vVewanWhGcr0D8tfX9S_dKXKWzDVp4sSes9RNfFaeUAie94uz-iiMcODDh9uhxr0iWMouFi_Q8UJ0vExYw/w557-h421/71XX5MDPMnL.__AC_SY300_SX300_QL70_FMwebp_.jpg" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title">Idzo Set of 3 Wooden Flower Boxes </h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt">These barrel planters are designed with ergonomic handles, drainage holes, and multiple sizes for a versatile gardening experience.</p>
+                <a href="https://amzn.to/3v5ke3S" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsXpsOT5OPMmoE2P_Ntb8DI4sjEPXruLQs_1WDxzSZ_CrNRVgimRfpkPcGKjGHCmvMc5J8KWOslQIMu29N2xs8_u1-yfnSzTGXqB7m7w0lpPhZPVWB-b3odsBAQ1e7I-A9lL4SXGgqrXswQH6hO6D8fTdVGMDn3NZSyNWKM_LRg5d6szWdLgCkvErnQhU/w295-h295/81XTqb9XFNL._AC_SX569_.jpg" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title">Quarut Large Plastic Plant Pots </h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt">Crafted for both indoor and outdoor use, these whiskey barrel planters feature drainage holes and saucers, ensuring optimal conditions for your plants.</p>
+                <a href="https://amzn.to/3Tojkch" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title"></h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt"></p>
+                <a href="#" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title"></h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt"></p>
+                <a href="#" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title"></h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt"></p>
+                <a href="#" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title"></h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt"></p>
+                <a href="#" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title"></h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt"></p>
+                <a href="#" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title"></h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt"></p>
+                <a href="#" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title"></h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt"></p>
+                <a href="#" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title"></h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt"></p>
+                <a href="#" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+          <div class="news-card">
+          
+            <img src="" alt="" class="news-card__image">
+            <div class="news-card__text-wrapper">
+              <h2 class="news-card__title"></h2>
+              <div class="news-card__details-wrapper">
+                <p class="news-card__excerpt"></p>
+                <a href="#" class="news-card__read-more">🛒BuyNow  <i class="fas fa-long-arrow-alt-right">⇨</i></a>
+              </div>
+            </div>
+          </div>
+
+      </div>
+</body>
+</html>
